@@ -1,0 +1,301 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --ff-heading: 'Staatliches', sans-serif;
+    --ff-texting: 'Palanquin', sans-serif;
+    --fc-heading: #FFFFFF;
+    --fc-texting: #23053A;
+    --fc-heading-dark: #4A4E69;
+    --bg-primary:#8E9AAF;
+    --bg-secondary: #EFF1FF;
+    --bg-tertiary: #FEEAFA;
+
+    --fs-heading: clamp(2.9rem, 0.4rem + 3vw, 4.8rem);
+    --fs-texting: clamp(1.2rem, 0.3rem + 1.5vw, 2.4rem);
+    --fs-footer : 1.4rem;
+    --lh-texting: clamp(1.5, 0.5rem + 2vw, 3,7rem);
+
+    font-size: 62.5%;
+}
+
+
+body {
+    background-color: var(--bg-secondary);
+}
+
+
+.page {
+    
+    max-width: 100rem;
+    height: 100vh;
+    display: grid;
+    gap: 3.6rem;
+    grid-template-columns: 1fr;
+    grid-template-rows: 279px 250px 1fr 0%;
+    grid-template-areas: 'header'
+    'text'
+    'main'
+    'footer';
+    
+}
+
+header {
+    padding-top: 2rem;
+    background-color: #8E9AAF;
+    grid-area: header;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+header img {
+    margin: 0 auto;
+    width: 267px;
+    height: 147px;
+}
+
+h1 {
+    padding: 0.8rem;
+    margin-top: 2.9rem;
+
+    height: 4.9rem;
+    width: 100%;
+
+    background-color: #CBC0D3;
+    
+    font-family: var(--ff-heading);
+    color: var(--fc-heading);
+    font-size: var(--fs-heading);
+    line-height: 3.4rem;
+    letter-spacing: 3px;
+    text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.text {
+    grid-area: text;
+}
+.text p{
+    
+    margin: 20px 32px 0;
+
+    color: var(--fc-texting);
+    font-size: var(--fs-texting);
+    font-family: var(--ff-texting);
+    line-height: var(--lh-texting);
+    text-align: center;
+}
+
+main {
+    background-color: var(--bg-secondary);
+    grid-area: main;
+    display: grid;
+    gap: 3.2rem;
+    grid-template-columns: 1fr;
+    grid-template-areas: 
+    'p'
+    'paleta'
+    'shakes'
+    'massas'
+    'picoles'
+    'paleta2'
+    'picoles2';
+}
+
+
+  .content:nth-child(1) {
+    grid-area: paleta;
+  }
+  .content:nth-child(2) {
+    grid-area: shakes;
+  }
+  .content:nth-child(3) {
+    grid-area: massas;
+  }
+  .content:nth-child(4) {
+    grid-area: picoles;
+    
+  }
+  .content:nth-child(5) {
+    grid-area: paleta2;
+    
+  }
+  .content:nth-child(6) {
+    grid-area: picoles2;
+    
+  }
+
+.content {
+    position: relative; 
+
+    margin: 0 3.2rem;
+
+    animation: downtop 700ms ;
+}
+
+.content img {
+    width: 100%;
+    height: 100%;
+}
+
+.content h2 {
+    position: absolute;
+    top:1.7rem;
+    right: 1.6rem;
+
+    width: 11.2rem;
+    height: 3.5rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+
+    background-color: var(--bg-tertiary);
+    font-family: var(--ff-heading);
+    font-size: var(--fs-texting);
+    color: var(--fc-heading-dark);
+    border-radius: 20px;
+
+    animation: topdown 500ms forwards;
+    animation-duration: 900ms;
+    
+}
+
+footer {
+    background-color: white;
+    grid-area: footer;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    display: none;
+}
+
+footer a {
+    font-weight: bold;
+    text-decoration: none;
+}
+
+@keyframes topdown {
+
+    0%{
+        
+        transform: translateY(-50px);
+    }
+
+    100% {
+        
+        transform: translateY(0px);
+    }
+
+}
+
+@keyframes downtop {
+    0%{
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (min-width: 480px) {
+
+
+main {
+    margin: 0 3rem 0;
+ 
+
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+    'paleta shakes'
+    'picoles shakes'
+    'picoles massas'
+    'paleta2 picoles2';
+    }
+
+    .page {
+        max-width: 130rem;
+    }
+    
+    .content {
+        margin:0;
+    }
+
+
+}
+
+
+
+
+@media (min-width: 1100px) {
+    
+.page {
+    max-width: 305rem;
+
+    background-color: #FFFFFF;
+
+    gap:0;
+    grid-template-columns: 29.2% 1fr 1fr;
+    grid-template-rows: 0.5fr 1fr 7%;
+    grid-template-areas: 
+    'header main main'
+    'text main main'
+    'text footer footer';
+
+    }
+
+
+.text {
+    min-height: 26rem;
+    
+    background-color: var(--bg-primary);
+    
+}
+
+.text p {
+    color: #FFFFFF;
+    font-size: 18px;
+    line-height: 20px;
+
+}
+
+main {
+    margin: 4.4rem 9rem 5rem;
+    
+    background-color: #FFFFFF;
+    
+
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-areas:
+    'paleta shakes paleta2'
+    'picoles shakes picoles2'
+    'picoles massas picoles2';
+
+}
+
+footer {
+    display: block;
+
+}
+
+footer p {
+    font-size: var(--fs-footer);
+    line-height: 28px;
+    text-align: center;
+    }   
+
+}
+
+
+
+    
+
